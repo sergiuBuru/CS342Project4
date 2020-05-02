@@ -39,10 +39,13 @@ public class Client extends Thread {
 		}
 		
 		while(true) {
+			
 			try {
+				
 				Serializable data = (Serializable) in.readObject();
 				callback.accept(data);
 			}
+			
 			catch(Exception e) {
 				
 			}
@@ -58,11 +61,6 @@ public class Client extends Thread {
 			e.printStackTrace();
 		}
 	}
-	
-	/*
-	public MorraInfo getInfo() {
-		return this.currentData;
-	} */
 	
 	
 }

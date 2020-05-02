@@ -17,6 +17,7 @@ public class Server{
 	ArrayList<ClientThread> clients = new ArrayList<ClientThread>();
 	TheServer server;
 	private Consumer<Serializable> callback;
+	private GameInfo info = new GameInfo();
 	
 	Server(int port) {
 		this.port = port;
@@ -111,14 +112,20 @@ public class Server{
 					
 				 while(true) {
 					    try {
+					    	
 					    	Serializable data = (Serializable) in.readObject();
+					    	
 					    	callback.accept(data);
+					    	
 					    	updateClients("client #" +count + " said: "+ data);
 					    	
 					    	}
 					    catch(Exception e) {
+					    	
 					    	callback.accept("Client #" + count + " has left the server");
+					    	
 					    	updateClients("Client #"+count+" has left the server!");
+					    	
 					    	clients.remove(this);
 					    	break;
 					    }
