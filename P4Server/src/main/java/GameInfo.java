@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class GameInfo implements Serializable {
@@ -12,7 +13,7 @@ public class GameInfo implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	public ArrayList<String> countries = new ArrayList<String>();
-	public ArrayList<String> superheroes = new ArrayList<String>();
+	public ArrayList<String> princesses = new ArrayList<String>();
 	public ArrayList<String> presidents = new ArrayList<String>();
 	
 	public int id;
@@ -34,6 +35,9 @@ public class GameInfo implements Serializable {
 		
 		//Read the words from the text files and input them in the array lists
 		inputWords();
+		Collections.shuffle(countries);
+		Collections.shuffle(princesses);
+		Collections.shuffle(presidents);
 	}
 	
 	public void setPoints(int points) {
@@ -109,7 +113,7 @@ public class GameInfo implements Serializable {
 			reader = new BufferedReader(new FileReader("src/main/resources/Categories/DisneyPrincesses.txt"));
 			word = reader.readLine();
 			while(word != null) {
-				this.presidents.add(word);
+				this.princesses.add(word);
 				word = reader.readLine();
 			}
 			reader = new BufferedReader(new FileReader("src/main/resources/Categories/USPresidents.txt"));

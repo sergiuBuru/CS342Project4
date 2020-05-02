@@ -33,7 +33,7 @@ public class WordGuessServer extends Application {
 		GameInfo game = new GameInfo();
 		game.countries.forEach(c -> System.out.println(c));
 		game.presidents.forEach(c -> System.out.println(c));
-		game.superheroes.forEach(c -> System.out.println(c));
+		game.princesses.forEach(c -> System.out.println(c));
 		
 		launch(args);
 	}
