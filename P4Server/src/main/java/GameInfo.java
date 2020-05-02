@@ -1,3 +1,8 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -21,17 +26,14 @@ public class GameInfo implements Serializable {
 							// i.e if word is cat, guess is c should show -> c _ _
 	
 	
-	public GameInfo() {
+	public GameInfo() throws FileNotFoundException {
 		this.points = 0;
 		this.inGame = true;
 		this.word = "";
 		this.numGuesses = 0;
 		
-		countries.add("Egypt");
-		countries.add("Nigeria");
-		countries.add("Ethiopia");
-		countries.add("Gambia");
-		countries.add("Liberia");
+		//Read the words from the text files and input them in the array lists
+		inputWords();
 	}
 	
 	public void setPoints(int points) {
@@ -93,7 +95,42 @@ public class GameInfo implements Serializable {
 		else { // guessed incorrectly
 			this.setNumGuess(++numGuesses);
 		}
-		
-		
 	}
+	
+	private void inputWords() throws FileNotFoundException {
+		BufferedReader reader;
+		try {
+			reader = new BufferedReader(new FileReader("src/main/resources/Categories/AfricanCountries.txt"));
+			String word = reader.readLine();
+			while(word != null) {
+				countries.add(word);
+				word = reader.readLine();
+			}
+			reader = new BufferedReader(new FileReader("src/main/resources/Categories/DisneyPrincesses.txt"));
+			word = reader.readLine();
+			while(word != null) {
+				this.presidents.add(word);
+				word = reader.readLine();
+			}
+			reader = new BufferedReader(new FileReader("src/main/resources/Categories/USPresidents.txt"));
+			word = reader.readLine();
+			while(word != null) {
+				this.presidents.add(word);
+				word = reader.readLine();
+			}
+			reader.close();
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }

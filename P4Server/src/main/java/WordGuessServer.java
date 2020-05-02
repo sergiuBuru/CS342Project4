@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 
 import javafx.animation.PauseTransition;
@@ -27,8 +28,13 @@ public class WordGuessServer extends Application {
 	private Server serverConnection;
 	private PauseTransition pause = new PauseTransition(Duration.seconds(.75));
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		// TODO Auto-generated method stub
+		GameInfo game = new GameInfo();
+		game.countries.forEach(c -> System.out.println(c));
+		game.presidents.forEach(c -> System.out.println(c));
+		game.superheroes.forEach(c -> System.out.println(c));
+		
 		launch(args);
 	}
 
