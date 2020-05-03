@@ -49,10 +49,10 @@ public class Client extends Thread{
 	
     }
 	
-	public void send(String message) {
+	public void send(GameInfo game) {
 		
 		try {
-			out.writeObject(message);
+			out.writeObject(game);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
