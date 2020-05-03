@@ -21,14 +21,14 @@
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Guess a letter:" />
-            <TextField alignment="CENTER" maxWidth="200.0" />
-            <Button mnemonicParsing="false" text="Submit Letter Guess" />
+            <TextField fx:id="letterGuess" alignment="CENTER" maxWidth="200.0" />
+            <Button fx:id="submitLetterGuess" mnemonicParsing="false" onAction="#submitLetterGuess" text="Submit Letter Guess" />
          </children>
       </VBox>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Letter Guesses Left: 6" />
+      <Text fx:id="guessCountText" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Letter Guesses Left: 6" />
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button mnemonicParsing="false" text="Back to category select" />
+            <Button fx:id="categorySelect" mnemonicParsing="false" onAction="#categorySelect" text="Back to category select" />
          </children>
       </HBox>
    </children>

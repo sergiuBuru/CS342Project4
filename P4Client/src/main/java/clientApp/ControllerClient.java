@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import clientApp.ControllerClient;
 
 public class ControllerClient implements Initializable {
@@ -23,6 +24,9 @@ public class ControllerClient implements Initializable {
 	
 	@FXML
 	private VBox root3;
+	
+	@FXML
+	private VBox root4;
 	
 	@FXML
 	private TextField clientIPText;
@@ -41,6 +45,15 @@ public class ControllerClient implements Initializable {
 	
 	@FXML
 	private Button categoryThreeButton;
+	
+	@FXML
+	private Button categorySelect;
+	
+	@FXML
+	private TextField letterGuess;
+	
+	@FXML
+	private Text guessCountText;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -83,5 +96,37 @@ public class ControllerClient implements Initializable {
         ControllerClient myctr = loader.getController();//get controller created by FXMLLoader        
         root3.getStylesheets().add("/styles/wordGuess.css");//set style      
         root2.getScene().setRoot(root3);//update scene graph
+	}
+	
+	public void categorySelect(ActionEvent e) throws IOException {
+		System.out.print("Selected category select");
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/categorySelect.fxml"));
+        Parent root2 = loader.load(); //load view into parent
+        ControllerClient myctr = loader.getController();//get controller created by FXMLLoader        
+        root2.getStylesheets().add("/styles/wordGuess.css");//set style      
+        root3.getScene().setRoot(root2);//update scene graph
+	}
+	
+	public void submitLetterGuess(ActionEvent e) throws IOException {
+		System.out.print("Selected submit letter guess");
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/gameOver.fxml"));
+        Parent root4 = loader.load(); //load view into parent
+        ControllerClient myctr = loader.getController();//get controller created by FXMLLoader        
+        root4.getStylesheets().add("/styles/wordGuess.css");//set style      
+        root3.getScene().setRoot(root4);//update scene graph
+	}
+	
+	public void playAgain(ActionEvent e) throws IOException {
+		System.out.print("Selected play again");
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/categorySelect.fxml"));
+        Parent root2 = loader.load(); //load view into parent
+        ControllerClient myctr = loader.getController();//get controller created by FXMLLoader        
+        root2.getStylesheets().add("/styles/wordGuess.css");//set style      
+        root4.getScene().setRoot(root2);//update scene graph
+	}
+	
+	public void quitGame(ActionEvent e) throws IOException {
+		System.out.print("Selected quit game");
+		System.exit(1);
 	}
 }
