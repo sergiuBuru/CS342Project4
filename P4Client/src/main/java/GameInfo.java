@@ -35,15 +35,13 @@ public class GameInfo implements Serializable {
 		this.word = "";
 		this.numGuesses = 6; // Will be incrementing to 6
 		this.numLosses = 3;
-		
+		this.category = "";
 		//Get the words
 		inputWords();
 		//Shuffle the arrays
 		Collections.shuffle(countries);
 		Collections.shuffle(princesses);
 		Collections.shuffle(presidents);
-		
-		 word = "OOOOOOOO";
 	}
 	
 	public void setPoints(int points) {
@@ -52,6 +50,30 @@ public class GameInfo implements Serializable {
 	
 	public int getPoints() {
 		return this.points;
+	}
+	
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	
+	public String getCategory() {
+		return this.category;
+	}
+
+	public void selectWord() { 
+		
+		if(this.getCategory().equals("countries")) {
+			this.setWord(countries.get(0));
+			countries.remove(0);
+		}
+		else if(this.getCategory().equals("princesses")) {
+			this.setWord(princesses.get(0));
+			princesses.remove(0);
+		}
+		else {
+			this.setWord(presidents.get(0));
+			presidents.remove(0);
+		}
 	}
 	
 	public void setNumGuess(int num) {

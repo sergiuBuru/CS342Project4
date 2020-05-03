@@ -62,23 +62,35 @@ public class ControllerClient implements Initializable {
         
 	}
 	
+	public void setGameInfo(GameInfo g) {
+		game = g;
+	}
+	
 	public void startClient(ActionEvent e) throws IOException  {
 		//Create the client instance and start it
 		client = new Client(clientIPText.getText(), Integer.parseInt(clientPortText.getText()));
+		//Create the serializable game info data
 		game = new GameInfo();
+		
 		System.out.println("Start Client pressed");
 		//get instance of the loader class
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/categorySelect.fxml"));
         Parent root2 = loader.load(); //load view into parent
-        ControllerClient myctr = loader.getController();//get controller created by FXMLLoader        
+        ControllerClient myctr = loader.getController();//get controller created by FXMLLoader   
+        myctr.setGameInfo(game);
+        
         root2.getStylesheets().add("/styles/categorySelect.css");//set style      
         root.getScene().setRoot(root2);//update scene graph
         
         client.start();
 	}
 	
-	public void categoryOne(ActionEvent e) throws IOException {
+	public void countriesCategory(ActionEvent e) throws IOException {
 		System.out.print("Selected category 1");
+		
+		//Set the category to countries
+		game.setCategory("countries");
+		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/wordGuess.fxml"));
         Parent root3 = loader.load(); //load view into parent
         ControllerClient myctr = loader.getController();//get controller created by FXMLLoader        
@@ -86,8 +98,12 @@ public class ControllerClient implements Initializable {
         root2.getScene().setRoot(root3);//update scene graph
 	}
 	
-	public void categoryTwo(ActionEvent e) throws IOException {
+	public void presidentsCategory(ActionEvent e) throws IOException {
 		System.out.print("Selected category 2");
+		
+		//Set the category to presidents
+		game.setCategory("presidents");
+		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/wordGuess.fxml"));
         Parent root3 = loader.load(); //load view into parent
         ControllerClient myctr = loader.getController();//get controller created by FXMLLoader        
@@ -95,8 +111,11 @@ public class ControllerClient implements Initializable {
         root2.getScene().setRoot(root3);//update scene graph
 	}
 	
-	public void categoryThree(ActionEvent e) throws IOException {
+	public void princessesCategory(ActionEvent e) throws IOException {
 		System.out.print("Selected category 3");
+		
+		game.setCategory("princesses");
+		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/wordGuess.fxml"));
         Parent root3 = loader.load(); //load view into parent
         ControllerClient myctr = loader.getController();//get controller created by FXMLLoader        
@@ -105,7 +124,7 @@ public class ControllerClient implements Initializable {
 	}
 	
 	public void categorySelect(ActionEvent e) throws IOException {
-		System.out.print("Selected category select");
+		System.out.print("Back to selected category");
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/categorySelect.fxml"));
         Parent root2 = loader.load(); //load view into parent
         ControllerClient myctr = loader.getController();//get controller created by FXMLLoader        

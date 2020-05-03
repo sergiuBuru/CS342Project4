@@ -63,8 +63,6 @@ public class ControllerServer implements Initializable {
         ControllerServer myctr = loader.getController();//get controller created by FXMLLoader        
         root2.getStylesheets().add("/styles/serverInfo.css");//set style      
         root.getScene().setRoot(root2);//update scene graph
-       
-        //myctr.updateListView();
         
         myctr.updateUI(server);
 	}

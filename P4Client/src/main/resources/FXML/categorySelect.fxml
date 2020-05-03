@@ -16,19 +16,19 @@
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
             <Label text="Category 1: " />
-            <Button fx:id="categoryOneButton" mnemonicParsing="false" onAction="#categoryOne" text="Category 1" />
+            <Button fx:id="categoryOneButton" mnemonicParsing="false" onAction="#countriesCategory" text="Category 1" />
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
             <Label text="Category 2: " />
-            <Button fx:id="categoryTwoButton" mnemonicParsing="false" onAction="#categoryTwo" text="Category 2" />
+            <Button fx:id="categoryTwoButton" mnemonicParsing="false" onAction="#presidentsCategory" text="Category 2" />
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
             <Label text="Category 3: " />
-            <Button fx:id="categoryThreeButton" mnemonicParsing="false" onAction="#categoryThree" text="Category 3" />
+            <Button fx:id="categoryThreeButton" mnemonicParsing="false" onAction="#princessesCategory" text="Category 3" />
          </children>
       </HBox>
    </children>

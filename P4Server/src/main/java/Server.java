@@ -41,10 +41,8 @@ public class Server{
 		    while(true) {
 		
 				ClientThread c = new ClientThread(mySocket.accept(), count);
-				count++;
-				System.out.println("--");
 				callback.accept("client " + count + " has connected to server");
-				System.out.println("--");
+				count++;
 				clients.add(c);
 				c.start();
 				
