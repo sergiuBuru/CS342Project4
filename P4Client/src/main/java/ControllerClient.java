@@ -13,7 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 public class ControllerClient implements Initializable {
-	
+	private Client client;
 	@FXML
 	private VBox root;
 	
@@ -60,6 +60,9 @@ public class ControllerClient implements Initializable {
 	}
 	
 	public void startClient(ActionEvent e) throws IOException  {
+		//Create the client instance and start it
+		client = new Client(clientIPText.getText(), Integer.parseInt(clientPortText.getText()));
+		
 		System.out.println("Start Client pressed");
 		//get instance of the loader class
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/categorySelect.fxml"));
@@ -67,6 +70,8 @@ public class ControllerClient implements Initializable {
         ControllerClient myctr = loader.getController();//get controller created by FXMLLoader        
         root2.getStylesheets().add("/styles/categorySelect.css");//set style      
         root.getScene().setRoot(root2);//update scene graph
+        
+        client.start();
 	}
 	
 	public void categoryOne(ActionEvent e) throws IOException {

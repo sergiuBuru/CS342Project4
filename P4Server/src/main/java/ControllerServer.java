@@ -3,17 +3,22 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
 public class ControllerServer implements Initializable {
-
+	private Server server;
+	@FXML
+	private ListView<String> listView = new ListView<String>();
+	
 	@FXML
 	private VBox root;
 
@@ -21,7 +26,7 @@ public class ControllerServer implements Initializable {
 	private VBox root2;
 
 	@FXML
-	private TextField serverPortText;
+	private TextField serverPortText = new TextField();
 
 	@FXML
 	private Button serverStartButton;
@@ -31,8 +36,10 @@ public class ControllerServer implements Initializable {
 		// TODO Auto-generated method stub
 
 	}
-
+	
 	public void startServer(ActionEvent e) throws IOException  {
+		//Create the server
+		server = new Server(Integer.parseInt(serverPortText.getText()));
 		System.out.println("Start Server pressed");
 		//get instance of the loader class
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/serverInfo.fxml"));
@@ -40,5 +47,14 @@ public class ControllerServer implements Initializable {
         ControllerServer myctr = loader.getController();//get controller created by FXMLLoader        
         root2.getStylesheets().add("/styles/serverInfo.css");//set style      
         root.getScene().setRoot(root2);//update scene graph
+        
+        listView.getItems().add("AAAAAAAAAAAAAAAAAA");
+        //Update the server ui
+        server.setConsumer(data -> {
+			Platform.runLater(() -> {
+				listView.getItems().add(data.toString());
+			});
+        	
+        });
 	}
 }

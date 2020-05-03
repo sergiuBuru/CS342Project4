@@ -13,6 +13,7 @@ public class Client extends Thread{
 	Consumer<Serializable> callback;
 	String ip;
 	int port;
+	GameInfo data;
 	
 	
 	
@@ -28,10 +29,10 @@ public class Client extends Thread{
 	public void run() {
 		
 		try {
-		clientSocket= new Socket(ip,port);
-	    out = new ObjectOutputStream(clientSocket.getOutputStream());
-	    in = new ObjectInputStream(clientSocket.getInputStream());
-	    clientSocket.setTcpNoDelay(true);
+			clientSocket= new Socket(ip,port);
+			out = new ObjectOutputStream(clientSocket.getOutputStream());
+			in = new ObjectInputStream(clientSocket.getInputStream());
+			clientSocket.setTcpNoDelay(true);
 		}
 		catch(Exception e) {}
 		

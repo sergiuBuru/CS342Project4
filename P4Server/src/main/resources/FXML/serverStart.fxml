@@ -24,7 +24,7 @@
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
             <Label text="Port: " />
-            <TextField promptText="5555" text="5555" />
+            <TextField fx:id="serverPortText" promptText="5555"/>
          </children>
       </HBox>
       <Button fx:id="serverStartButton" mnemonicParsing="false" onAction="#startServer" text="Start Server" />

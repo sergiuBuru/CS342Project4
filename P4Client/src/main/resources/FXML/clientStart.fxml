@@ -30,7 +30,7 @@
       <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
             <Label text="Port: " />
-            <TextField fx:id="clientPortText" promptText="5555" text="5555" />
+            <TextField fx:id="clientPortText" promptText="5555" />
          </children>
       </HBox>
       <Button fx:id="clientStartButton" mnemonicParsing="false" onAction="#startClient" text="Start Client" />

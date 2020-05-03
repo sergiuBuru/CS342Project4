@@ -41,12 +41,11 @@ public class Server{
 		    while(true) {
 		
 				ClientThread c = new ClientThread(mySocket.accept(), count);
-				callback.accept("client has connected to server: " + "client #" + count);
+				System.out.println("--");
+				callback.accept("client has connected to server");
+				System.out.println("--");
 				clients.add(c);
 				c.start();
-				
-				count++;
-				
 			    }
 			}//end of try
 				catch(Exception e) {
@@ -69,18 +68,6 @@ public class Server{
 				this.count = count;	
 			}
 			
-			/*
-			 * When all clients need to recieve a message
-			 */
-			public void updateClients(String message) {
-				for(int i = 0; i < clients.size(); i++) {
-					ClientThread t = clients.get(i);
-					try {
-					 t.out.writeObject(message);
-					}
-					catch(Exception e) {}
-				}
-			}
 			
 			public void run(){
 					
@@ -93,18 +80,16 @@ public class Server{
 					System.out.println("Streams not open");
 				}
 				
-				updateClients("new client on server: client #"+count);
+				//updateClients("new client on server: client #"+count);
 					
 				 while(true) {
 					    try {
-					    	String data = in.readObject().toString();
-					    	callback.accept("client: " + count + " sent: " + data);
-					    	updateClients("client #"+count+" said: "+data);
-					    	
+					    	GameInfo data = (GameInfo)in.readObject();
+					    	if(data.inGame) {callback.accept("a");}
 					    	}
 					    catch(Exception e) {
 					    	callback.accept("OOOOPPs...Something wrong with the socket from client: " + count + "....closing down!");
-					    	updateClients("Client #"+count+" has left the server!");
+					    	//updateClients("Client #"+count+" has left the server!");
 					    	clients.remove(this);
 					    	break;
 					    }
