@@ -107,6 +107,7 @@ public class ControllerClient implements Initializable {
         client.send(game);
         //Set the client for the next scene
         myctr.setClient(client);
+        myctr.setGameInfo(game);
         
         root3.getStylesheets().add("/styles/wordGuess.css");//set style      
         root2.getScene().setRoot(root3);//update scene graph
@@ -127,6 +128,7 @@ public class ControllerClient implements Initializable {
         client.send(game);
         //Set the client for the next scene
         myctr.setClient(client);
+        myctr.setGameInfo(game);
         
         root3.getStylesheets().add("/styles/wordGuess.css");//set style      
         root2.getScene().setRoot(root3);//update scene graph
@@ -147,6 +149,7 @@ public class ControllerClient implements Initializable {
         client.send(game);
         //Set the client for the next scene
         myctr.setClient(client);
+        myctr.setGameInfo(game);
         
         root3.getStylesheets().add("/styles/wordGuess.css");//set style      
         root2.getScene().setRoot(root3);//update scene graph
@@ -165,11 +168,17 @@ public class ControllerClient implements Initializable {
 	//Client enters a letter then presses the send button
 	public void submitLetterGuess(ActionEvent e) throws IOException {
 		System.out.print("Selected submit letter guess");
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/gameOver.fxml"));
-        Parent root4 = loader.load(); //load view into parent
-        ControllerClient myctr = loader.getController();//get controller created by FXMLLoader        
-        root4.getStylesheets().add("/styles/wordGuess.css");//set style      
-        root3.getScene().setRoot(root4);//update scene graph
+		
+		//letterGuess = new TextField();
+		
+		game.setGuess(this.letterGuess.getText());
+		client.send(game);
+		
+		//FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/gameOver.fxml"));
+        //Parent root4 = loader.load(); //load view into parent
+        //ControllerClient myctr = loader.getController();//get controller created by FXMLLoader        
+        //root4.getStylesheets().add("/styles/wordGuess.css");//set style      
+        //root3.getScene().setRoot(root4);//update scene graph
 	}
 	
 	//Player choses to play again

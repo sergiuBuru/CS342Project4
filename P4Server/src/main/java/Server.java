@@ -87,8 +87,21 @@ public class Server{
 				 while(true) {
 					    try {
 					    	data = (GameInfo)in.readObject();
-					    	System.out.println("received the word");
-					    	callback.accept("BBBBBBB");
+					    	
+					    	//check if the client sent the category
+					    	if(!data.getCategory().equals("")) {
+					    		data.selectWord();
+					    		out.writeObject(data);
+					    		data.setCategory("");
+					    		callback.accept("Client " + count + " picked " + data.getCategory());
+					    	}
+					    	else//the client guessed a letter. Check it
+					    	{
+					    		data.checkGuess();
+					    		out.writeObject(data);
+					    		callback.accept("Client guessed " + data.getGuess());
+					    	}
+
 					    	}
 					    catch(Exception e) {
 					    	callback.accept("OOOOPPs...Something wrong with the socket from client: " + count + "....closing down!");

@@ -33,8 +33,7 @@ public class Client extends Thread{
 			out = new ObjectOutputStream(clientSocket.getOutputStream());
 			in = new ObjectInputStream(clientSocket.getInputStream());
 			clientSocket.setTcpNoDelay(true);
-			GameInfo temp = new GameInfo();
-			out.writeObject(temp);
+
 		}
 		catch(Exception e) {}
 		

@@ -70,7 +70,7 @@ public class GameInfo implements Serializable {
 			this.setWord(princesses.get(0));
 			princesses.remove(0);
 		}
-		else {
+		else if(this.getCategory().equals("presidents")){
 			this.setWord(presidents.get(0));
 			presidents.remove(0);
 		}
@@ -118,7 +118,7 @@ public class GameInfo implements Serializable {
 		return this.wordTest;
 	}
 	
-	public void checkGuess(String guessLetter) {
+	public void checkGuess() {
 		
 		this.foundLetter = false;
 		
