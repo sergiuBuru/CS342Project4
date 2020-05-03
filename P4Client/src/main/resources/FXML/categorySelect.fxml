@@ -4,28 +4,31 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="root2" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clientApp.ControllerClient">
    <children>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Choose a category" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Choose a category">
+         <font>
+            <Font size="24.0" />
+         </font></Text>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
             <Label text="Category 1: " />
-            <Button mnemonicParsing="false" text="Category 1" />
+            <Button fx:id="categoryOneButton" mnemonicParsing="false" onAction="#categoryOne" text="Category 1" />
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
             <Label text="Category 2: " />
-            <Button mnemonicParsing="false" text="Category 2" />
+            <Button fx:id="categoryTwoButton" mnemonicParsing="false" onAction="#categoryTwo" text="Category 2" />
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
             <Label text="Category 3: " />
-            <Button mnemonicParsing="false" text="Category 3" />
+            <Button fx:id="categoryThreeButton" mnemonicParsing="false" onAction="#categoryThree" text="Category 3" />
          </children>
       </HBox>
    </children>
