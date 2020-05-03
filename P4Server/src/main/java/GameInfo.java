@@ -1,5 +1,10 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class GameInfo implements Serializable {
@@ -7,7 +12,7 @@ public class GameInfo implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	public ArrayList<String> countries = new ArrayList<String>();
-	public ArrayList<String> superheroes = new ArrayList<String>();
+	public ArrayList<String> princesses = new ArrayList<String>();
 	public ArrayList<String> presidents = new ArrayList<String>();
 	
 	public int id;
@@ -23,18 +28,19 @@ public class GameInfo implements Serializable {
 							// i.e if word is cat, guess is c should show -> c _ _
 	
 	
-	public GameInfo() {
+	public GameInfo() throws FileNotFoundException {
 		this.points = 0;
 		this.inGame = true;
 		this.word = "";
 		this.numGuesses = 6; // Will be incrementing to 6
 		this.numLosses = 3;
 		
-		countries.add("Egypt");
-		countries.add("Nigeria");
-		countries.add("Ethiopia");
-		countries.add("Gambia");
-		countries.add("Liberia");
+		//Get the words
+		inputWords();
+		//Shuffle the arrays
+		Collections.shuffle(countries);
+		Collections.shuffle(princesses);
+		Collections.shuffle(presidents);
 	}
 	
 	public void setPoints(int points) {
@@ -123,7 +129,39 @@ public class GameInfo implements Serializable {
 		
 		if(numGuesses == 0) { // If incorrectly guessed 6 times, increment a loss for that category
 			this.setNumLosses(--numLosses);		}
-		
-		
+			
 	}
+	
+	
+	//Input the words from text files
+	private void inputWords() throws FileNotFoundException {
+		BufferedReader reader;
+		try {
+			reader = new BufferedReader(new FileReader("src/main/resources/Categories/AfricanCountries.txt"));
+			String word = reader.readLine();
+			while(word != null) {
+				countries.add(word);
+				word = reader.readLine();
+			}
+			reader = new BufferedReader(new FileReader("src/main/resources/Categories/DisneyPrincesses.txt"));
+			word = reader.readLine();
+			while(word != null) {
+				this.princesses.add(word);
+				word = reader.readLine();
+			}
+			reader = new BufferedReader(new FileReader("src/main/resources/Categories/USPresidents.txt"));
+			word = reader.readLine();
+			while(word != null) {
+				this.presidents.add(word);
+				word = reader.readLine();
+			}
+			reader.close();
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+	
+	}
+
+
 }
