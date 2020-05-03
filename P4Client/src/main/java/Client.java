@@ -11,15 +11,24 @@ public class Client extends Thread{
 	ObjectOutputStream out;
 	ObjectInputStream in;
 	Consumer<Serializable> callback;
+	String ip;
+	int port;
 	
-	Client(Consumer<Serializable> call){	
+	
+	
+	Client(String ip, int port){	
+		this.ip = ip;
+		this.port = port;
+	}
+	
+	public void callBack(Consumer<Serializable> call) {
 		callback = call;
 	}
 	
 	public void run() {
 		
 		try {
-		clientSocket= new Socket("127.0.0.1",5555);
+		clientSocket= new Socket(ip,port);
 	    out = new ObjectOutputStream(clientSocket.getOutputStream());
 	    in = new ObjectInputStream(clientSocket.getInputStream());
 	    clientSocket.setTcpNoDelay(true);
@@ -29,7 +38,7 @@ public class Client extends Thread{
 		while(true) {
 			 
 			try {
-			String message = in.readObject().toString();
+			GameInfo message = (GameInfo)in.readObject();
 			callback.accept(message);
 			}
 			catch(Exception e) {}
