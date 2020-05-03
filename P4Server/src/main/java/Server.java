@@ -23,7 +23,7 @@ public class Server{
 	
 	void setConsumer(Consumer<Serializable> call) {
 		callback = call;
-		callback.accept("Waiting for clients...");
+		//callback.accept("Waiting for clients...");
 		server = new TheServer();
 		server.start();
 	}
@@ -36,22 +36,25 @@ public class Server{
 		    	
 			ServerSocket mySocket = new ServerSocket(port);
 		    System.out.println("Server is waiting for a client!");
-		  
+		    
 			
 		    while(true) {
 		
 				ClientThread c = new ClientThread(mySocket.accept(), count);
+				count++;
 				System.out.println("--");
-				callback.accept("client has connected to server");
+				callback.accept("client " + count + " has connected to server");
 				System.out.println("--");
 				clients.add(c);
 				c.start();
-			    }
-			}//end of try
+				
+			}
+		    }//end of try
 				catch(Exception e) {
 					callback.accept("Server socket did not launch");
 				}
 			}//end of while
+			
 		}
 	
 
@@ -62,6 +65,7 @@ public class Server{
 			int count;
 			ObjectInputStream in;
 			ObjectOutputStream out;
+			GameInfo data;
 			
 			ClientThread(Socket s, int count){
 				this.connection = s;
@@ -84,12 +88,12 @@ public class Server{
 					
 				 while(true) {
 					    try {
-					    	GameInfo data = (GameInfo)in.readObject();
-					    	if(data.inGame) {callback.accept("a");}
+					    	data = (GameInfo)in.readObject();
+					    	System.out.println("received the word");
+					    	callback.accept("BBBBBBB");
 					    	}
 					    catch(Exception e) {
 					    	callback.accept("OOOOPPs...Something wrong with the socket from client: " + count + "....closing down!");
-					    	//updateClients("Client #"+count+" has left the server!");
 					    	clients.remove(this);
 					    	break;
 					    }

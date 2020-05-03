@@ -33,13 +33,15 @@ public class Client extends Thread{
 			out = new ObjectOutputStream(clientSocket.getOutputStream());
 			in = new ObjectInputStream(clientSocket.getInputStream());
 			clientSocket.setTcpNoDelay(true);
+			GameInfo temp = new GameInfo();
+			out.writeObject(temp);
 		}
 		catch(Exception e) {}
 		
 		while(true) {
 			 
 			try {
-			GameInfo data = (GameInfo)in.readObject();
+			data = (GameInfo)in.readObject();
 			callback.accept(data);
 			}
 			catch(Exception e) {}
@@ -47,10 +49,10 @@ public class Client extends Thread{
 	
     }
 	
-	public void send(GameInfo data) {
+	public void send(String message) {
 		
 		try {
-			out.writeObject(data);
+			out.writeObject(message);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

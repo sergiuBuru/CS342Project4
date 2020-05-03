@@ -14,6 +14,9 @@ import javafx.scene.text.Text;
 
 public class ControllerClient implements Initializable {
 	private Client client;
+	
+	private GameInfo game;
+	
 	@FXML
 	private VBox root;
 	
@@ -62,7 +65,7 @@ public class ControllerClient implements Initializable {
 	public void startClient(ActionEvent e) throws IOException  {
 		//Create the client instance and start it
 		client = new Client(clientIPText.getText(), Integer.parseInt(clientPortText.getText()));
-		
+		game = new GameInfo();
 		System.out.println("Start Client pressed");
 		//get instance of the loader class
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/categorySelect.fxml"));

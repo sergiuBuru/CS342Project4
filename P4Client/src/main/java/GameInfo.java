@@ -20,6 +20,7 @@ public class GameInfo implements Serializable {
 	public int numGuesses; // per category
 	public int numLosses; // if 3 losses of a category
 	public String guessLetter;
+	public String category;
 	public boolean inGame;
 	public boolean foundWord;
 	public boolean foundLetter;
@@ -41,6 +42,8 @@ public class GameInfo implements Serializable {
 		Collections.shuffle(countries);
 		Collections.shuffle(princesses);
 		Collections.shuffle(presidents);
+		
+		 word = "OOOOOOOO";
 	}
 	
 	public void setPoints(int points) {

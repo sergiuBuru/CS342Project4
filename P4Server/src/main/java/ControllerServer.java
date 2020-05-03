@@ -37,8 +37,24 @@ public class ControllerServer implements Initializable {
 
 	}
 	
+	public void updateListView() {
+		listView.getItems().add("AAAAAAAAAAA");
+	}
+	
+	public void updateUI(Server server) {
+		System.out.println("inside updateUI");
+		System.out.println(server.count);
+		server.setConsumer(data -> {
+			Platform.runLater(() -> {
+				listView.getItems().add(data.toString());
+			});
+        	
+        });
+	}
+	
 	public void startServer(ActionEvent e) throws IOException  {
 		//Create the server
+		System.out.println("inside inside start server");
 		server = new Server(Integer.parseInt(serverPortText.getText()));
 		System.out.println("Start Server pressed");
 		//get instance of the loader class
@@ -47,14 +63,16 @@ public class ControllerServer implements Initializable {
         ControllerServer myctr = loader.getController();//get controller created by FXMLLoader        
         root2.getStylesheets().add("/styles/serverInfo.css");//set style      
         root.getScene().setRoot(root2);//update scene graph
+       
+        //myctr.updateListView();
         
-        listView.getItems().add("AAAAAAAAAAAAAAAAAA");
-        //Update the server ui
-        server.setConsumer(data -> {
-			Platform.runLater(() -> {
-				listView.getItems().add(data.toString());
-			});
-        	
-        });
+        myctr.updateUI(server);
 	}
+	
+	
+	
+	
+	
+	
+	
 }
