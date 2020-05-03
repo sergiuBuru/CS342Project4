@@ -38,15 +38,15 @@ public class Client extends Thread{
 		while(true) {
 			 
 			try {
-			GameInfo message = (GameInfo)in.readObject();
-			callback.accept(message);
+			GameInfo data = (GameInfo)in.readObject();
+			callback.accept(data);
 			}
 			catch(Exception e) {}
 		}
 	
     }
 	
-	public void send(String data) {
+	public void send(GameInfo data) {
 		
 		try {
 			out.writeObject(data);
