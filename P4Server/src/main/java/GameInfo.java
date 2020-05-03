@@ -63,7 +63,8 @@ public class GameInfo implements Serializable {
 		
 		for(int i = 0; i < word.length(); i++) {
 			wordTest[i] = '_';
-		} 
+		}
+		
 	}
 	
 	public void setGuess(String letter) {
@@ -88,14 +89,6 @@ public class GameInfo implements Serializable {
 				}
 			}
 		}
-		
-		else if(guessLetter == word) { // guessed whole word
-			this.setGuess(word);
-			this.setPoints(++points);
-			this.foundWord = true;
-			
-		}
-		
 		else { // guessed incorrectly
 			this.setNumGuess(++numGuesses);
 		}
