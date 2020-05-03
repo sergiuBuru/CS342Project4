@@ -17,7 +17,6 @@ public class Server{
 	ArrayList<ClientThread> clients = new ArrayList<ClientThread>();
 	TheServer server;
 	private Consumer<Serializable> callback;
-	private GameInfo info = new GameInfo();
 	
 	Server(int port) {
 		this.port = port;
@@ -65,6 +64,8 @@ public class Server{
 			int count;
 			ObjectInputStream in;
 			ObjectOutputStream out;
+
+			private GameInfo info = new GameInfo();
 			
 			ClientThread(Socket s, int count){
 				this.connection = s;
@@ -100,9 +101,11 @@ public class Server{
 			public void run(){
 					
 				try {
-					in = new ObjectInputStream(connection.getInputStream());
 					out = new ObjectOutputStream(connection.getOutputStream());
+					in = new ObjectInputStream(connection.getInputStream());
 					connection.setTcpNoDelay(true);	
+					
+					out.writeObject(info);
 				}
 				catch(Exception e) {
 					System.out.println("Streams not open");
@@ -113,11 +116,11 @@ public class Server{
 				 while(true) {
 					    try {
 					    	
-					    	Serializable data = (Serializable) in.readObject();
+					    	info = (GameInfo) in.readObject();
 					    	
-					    	callback.accept(data);
+					    	info.checkGuess(info.guessLetter);
 					    	
-					    	updateClients("client #" +count + " said: "+ data);
+					    	out.writeObject(info);
 					    	
 					    	}
 					    catch(Exception e) {
