@@ -1,18 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="root3" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clientApp.ControllerClient">
    <children>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Word to guess here" textAlignment="CENTER">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <TextField alignment="CENTER" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Word to guess here" textAlignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Guess a letter:" />
+            <TextField fx:id="letterGuess" alignment="CENTER" maxWidth="200.0" />
+            <Button fx:id="submitLetterGuess" mnemonicParsing="false" onAction="#submitLetterGuess" text="Submit Letter Guess" />
+         </children>
+      </VBox>
+      <Text fx:id="guessCountText" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Letter Guesses Left: 6" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="categorySelect" mnemonicParsing="false" onAction="#categorySelect" text="Back to category select" />
+         </children>
+      </HBox>
    </children>
 </VBox>
