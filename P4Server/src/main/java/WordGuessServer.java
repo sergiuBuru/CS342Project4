@@ -16,7 +16,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class WordGuessServer extends Application {
+public class WordGuessServer {
 
 	private Button startServer;
 	private TextField portText;
@@ -26,12 +26,17 @@ public class WordGuessServer extends Application {
 	private ObservableList<String> listContents;
 	private Server serverConnection;
 	private PauseTransition pause = new PauseTransition(Duration.seconds(.75));
-
+	
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		launch(args);
+		//launch(args);
+		GameInfo game = new GameInfo();
+		game.setWord("Nigeria");
+		game.setGuess("i");
+		game.checkGuess("i");
 	}
-
+/*
 	//feel free to remove the starter code from this method
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -95,6 +100,6 @@ public class WordGuessServer extends Application {
 		box.setAlignment(Pos.CENTER);
 		
 		return new Scene(box,500,500);
-	}
+	} */
 	
 }
