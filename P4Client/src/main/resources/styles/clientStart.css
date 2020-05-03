@@ -1,0 +1,11 @@
+.root {
+    -fx-background-image: url("/images/background.jpg");
+    -fx-background-size: 800 600;
+    -fx-background-position: center center;
+}
+
+#clientStartButton {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-background-color: pink;
+}

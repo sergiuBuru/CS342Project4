@@ -50,10 +50,19 @@ public class ControllerClient implements Initializable {
 	private Button categorySelect;
 	
 	@FXML
+	private Button submitLetterGuess;
+	
+	@FXML
 	private TextField letterGuess;
 	
 	@FXML
 	private Text guessCountText;
+	
+	@FXML
+	private Button playAgainButton;
+	
+	@FXML
+	private Button quitButton;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -112,7 +121,7 @@ public class ControllerClient implements Initializable {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/gameOver.fxml"));
         Parent root4 = loader.load(); //load view into parent
         ControllerClient myctr = loader.getController();//get controller created by FXMLLoader        
-        root4.getStylesheets().add("/styles/wordGuess.css");//set style      
+        root4.getStylesheets().add("/styles/gameOver.css");//set style      
         root3.getScene().setRoot(root4);//update scene graph
 	}
 	
@@ -121,7 +130,7 @@ public class ControllerClient implements Initializable {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/categorySelect.fxml"));
         Parent root2 = loader.load(); //load view into parent
         ControllerClient myctr = loader.getController();//get controller created by FXMLLoader        
-        root2.getStylesheets().add("/styles/wordGuess.css");//set style      
+        root2.getStylesheets().add("/styles/categorySelect.css");//set style      
         root4.getScene().setRoot(root2);//update scene graph
 	}
 	

@@ -1,0 +1,15 @@
+#categoryOneButton, #categoryTwoButton, #categoryThreeButton {
+    -fx-font-weight: bold;
+}
+
+#categoryOneButton {
+    -fx-background-color: #00ffff;
+}
+
+#categoryTwoButton {
+    -fx-background-color: #009999;
+}
+
+#categoryThreeButton {
+    -fx-background-color: #006666;
+}

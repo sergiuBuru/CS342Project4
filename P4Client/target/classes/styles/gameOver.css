@@ -1,0 +1,13 @@
+.root {
+    -fx-font-size: 16px;
+}
+
+#playAgainButton {
+    -fx-font-weight: bold;
+    -fx-background-color: #00aa00;
+}
+
+#quitButton {
+    -fx-font-weight: bold;
+    -fx-background-color: #ff2000;
+}
