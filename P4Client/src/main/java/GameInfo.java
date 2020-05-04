@@ -32,10 +32,11 @@ public class GameInfo implements Serializable {
 	public GameInfo() throws FileNotFoundException {
 		this.points = 0;
 		this.inGame = true;
-		this.word = "";
+		this.word = new String();
+		this.guessLetter = new String();
+		this.category = new String();
 		this.numGuesses = 6; // Will be incrementing to 6
 		this.numLosses = 3;
-		this.category = "";
 		//Get the words
 		inputWords();
 		//Shuffle the arrays
@@ -109,10 +110,12 @@ public class GameInfo implements Serializable {
 	
 	public void setGuess(String letter) {
 		this.guessLetter = letter;
+		System.out.println("in set guess: guess is" + letter);
 	}
 	
 	public String getGuess() {
 		return this.guessLetter;
+		
 	}
 	
 	public char[] getWordTest() {
