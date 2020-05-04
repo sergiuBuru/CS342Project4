@@ -50,10 +50,15 @@ public class ControllerClient implements Initializable {
 	private Button categorySelect;
 	
 	@FXML
-	private Button submitLetterGuess;
+	private Button letterA, letterB, letterC, letterD, letterE, letterF, letterG, letterH, letterI, letterJ, letterK,
+			letterL, letterM;
+
+	@FXML
+	private Button letterN, letterO, letterP, letterQ, letterR, letterS, letterT, letterU, letterV, letterW, letterX,
+			letterY, letterZ;
 	
 	@FXML
-	private TextField letterGuess;
+	private Text lettersGuessedText;
 	
 	@FXML
 	private Text guessCountText;
@@ -116,13 +121,134 @@ public class ControllerClient implements Initializable {
         root3.getScene().setRoot(root2);//update scene graph
 	}
 	
-	public void submitLetterGuess(ActionEvent e) throws IOException {
-		System.out.print("Selected submit letter guess");
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/gameOver.fxml"));
-        Parent root4 = loader.load(); //load view into parent
-        ControllerClient myctr = loader.getController();//get controller created by FXMLLoader        
-        root4.getStylesheets().add("/styles/gameOver.css");//set style      
-        root3.getScene().setRoot(root4);//update scene graph
+	
+	public void letterAMethod (ActionEvent e) throws IOException {
+		System.out.print("A");
+	}
+	
+
+	public void letterBMethod (ActionEvent e) throws IOException {
+		System.out.print("B");
+	}
+	
+
+	public void letterCMethod (ActionEvent e) throws IOException {
+		System.out.print("C");
+	}
+	
+
+	public void letterDMethod (ActionEvent e) throws IOException {
+		System.out.print("D");
+	}
+	
+
+	public void letterEMethod (ActionEvent e) throws IOException {
+		System.out.print("E");
+	}
+	
+
+	public void letterFMethod (ActionEvent e) throws IOException {
+		System.out.print("F");
+	}
+	
+
+	public void letterGMethod (ActionEvent e) throws IOException {
+		System.out.print("G");
+	}
+	
+
+	public void letterHMethod (ActionEvent e) throws IOException {
+		System.out.print("H");
+	}
+	
+
+	public void letterIMethod (ActionEvent e) throws IOException {
+		System.out.print("I");
+	}
+	
+
+	public void letterJMethod (ActionEvent e) throws IOException {
+		System.out.print("J");
+	}
+	
+
+	public void letterKMethod (ActionEvent e) throws IOException {
+		System.out.print("K");
+	}
+	
+
+	public void letterLMethod (ActionEvent e) throws IOException {
+		System.out.print("L");
+	}
+	
+
+	public void letterMMethod (ActionEvent e) throws IOException {
+		System.out.print("M");
+	}
+	
+
+	public void letterNMethod (ActionEvent e) throws IOException {
+		System.out.print("N");
+	}
+	
+
+	public void letterOMethod (ActionEvent e) throws IOException {
+		System.out.print("O");
+	}
+	
+
+	public void letterPMethod (ActionEvent e) throws IOException {
+		System.out.print("P");
+	}
+	
+
+	public void letterQMethod (ActionEvent e) throws IOException {
+		System.out.print("Q");
+	}
+	
+
+	public void letterRMethod (ActionEvent e) throws IOException {
+		System.out.print("R");
+	}
+	
+
+	public void letterSMethod (ActionEvent e) throws IOException {
+		System.out.print("S");
+	}
+	
+
+	public void letterTMethod (ActionEvent e) throws IOException {
+		System.out.print("T");
+	}
+	
+
+	public void letterUMethod (ActionEvent e) throws IOException {
+		System.out.print("U");
+	}
+	
+
+	public void letterVMethod (ActionEvent e) throws IOException {
+		System.out.print("V");
+	}
+	
+
+	public void letterWMethod (ActionEvent e) throws IOException {
+		System.out.print("W");
+	}
+	
+
+	public void letterXMethod (ActionEvent e) throws IOException {
+		System.out.print("X");
+	}
+	
+
+	public void letterYMethod (ActionEvent e) throws IOException {
+		System.out.print("Y");
+	}
+	
+
+	public void letterZMethod (ActionEvent e) throws IOException {
+		System.out.print("Z");
 	}
 	
 	public void playAgain(ActionEvent e) throws IOException {
