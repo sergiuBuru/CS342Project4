@@ -87,13 +87,13 @@ public class Server{
 					    	data = (GameInfo)in.readObject();
 					    	System.out.println("game guess is " + data.getGuess());
 					    	//check if the client sent the category
-					    	if(data.getCategory() != null) {
+					    	if(data.getCategory() != "") {
 					    		data.selectWord();
 					    		callback.accept("Client " + count + " picked " + data.getCategory());
 					    		data.setCategory("");
 					    		out.writeObject(data);
 					    	}
-					    	else if(data.getGuess() != null)//the client guessed a letter. Check it
+					    	else if(data.getGuess() != "" && data.getGuess() != null)//the client guessed a letter. Check it
 					    	{
 					    		System.out.println("-- data guess is " + data.getGuess());
 					    		data.checkGuess();

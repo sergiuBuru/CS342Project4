@@ -118,12 +118,12 @@ public class ControllerClient implements Initializable {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/wordGuess.fxml"));
         Parent root3 = loader.load(); //load view into parent
         ControllerClient myctr = loader.getController();//get controller created by FXMLLoader        
-        
-        //Send the data from the client to the server
-        client.send(game);
         //Set the client for the next scene
         myctr.setClient(client);
         myctr.setGameInfo(game);
+        //Send the data from the client to the server
+        client.send(game);
+        
         
         root3.getStylesheets().add("/styles/wordGuess.css");//set style      
         root2.getScene().setRoot(root3);//update scene graph
@@ -185,6 +185,9 @@ public class ControllerClient implements Initializable {
 
 	public void letterBMethod (ActionEvent e) throws IOException {
 		System.out.print("B");
+		System.out.println("in letter a function :" + game.word);
+		game.setGuess("B");
+		client.send(game);
 	}
 
 

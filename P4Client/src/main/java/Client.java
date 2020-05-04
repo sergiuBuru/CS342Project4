@@ -41,7 +41,7 @@ public class Client extends Thread{
 			 
 			try {
 			data = (GameInfo)in.readObject();
-			callback.accept(data.word);
+			//callback.accept(data.word);
 			}
 			catch(Exception e) {}
 		}
