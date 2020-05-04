@@ -56,6 +56,7 @@ public class ControllerClient implements Initializable {
 	@FXML
 	private Text guessCountText;
 	
+	static private String letterEntered =  "";
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -170,15 +171,16 @@ public class ControllerClient implements Initializable {
 		System.out.print("Selected submit letter guess");
 		
 		//letterGuess = new TextField();
-		
-		game.setGuess(this.letterGuess.getText());
+		letterEntered = letterGuess.getText();
+		System.out.println("in controller letter guess is: " + letterEntered);
+		game.setGuess(letterGuess.getText());
 		client.send(game);
 		
 		//FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/gameOver.fxml"));
         //Parent root4 = loader.load(); //load view into parent
         //ControllerClient myctr = loader.getController();//get controller created by FXMLLoader        
-        //root4.getStylesheets().add("/styles/wordGuess.css");//set style      
-        //root3.getScene().setRoot(root4);//update scene graph
+        root4.getStylesheets().add("/styles/wordGuess.css");//set style      
+        root3.getScene().setRoot(root4);//update scene graph
 	}
 	
 	//Player choses to play again

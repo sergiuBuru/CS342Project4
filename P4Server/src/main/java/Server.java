@@ -89,13 +89,12 @@ public class Server{
 					    	data = (GameInfo)in.readObject();
 					    	
 					    	//check if the client sent the category
-					    	if(!data.getCategory().equals("")) {
-					    		data.selectWord();
+					    	if(data.getCategory() != "") {
 					    		out.writeObject(data);
-					    		data.setCategory("");
 					    		callback.accept("Client " + count + " picked " + data.getCategory());
+					    		data.setCategory("");
 					    	}
-					    	else//the client guessed a letter. Check it
+					    	else if(data.getGuess() != "")//the client guessed a letter. Check it
 					    	{
 					    		data.checkGuess();
 					    		out.writeObject(data);
@@ -104,7 +103,8 @@ public class Server{
 
 					    	}
 					    catch(Exception e) {
-					    	callback.accept("OOOOPPs...Something wrong with the socket from client: " + count + "....closing down!");
+					    	//callback.accept("OOOOPPs...Something wrong with the socket from client: " + count + "....closing down!");
+					    	e.printStackTrace();
 					    	clients.remove(this);
 					    	break;
 					    }

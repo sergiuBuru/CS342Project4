@@ -54,6 +54,7 @@ public class GameInfo implements Serializable {
 	
 	public void setCategory(String category) {
 		this.category = category;
+		selectWord();
 	}
 	
 	public String getCategory() {
@@ -92,7 +93,7 @@ public class GameInfo implements Serializable {
 		return this.numLosses;
 	}
 	
-	public void setWord(String word) { // in server code, should have the randomizer
+	public void setWord(String word) { 
 		this.word = word;
 		
 		wordTest = new char[word.length()];
@@ -121,7 +122,8 @@ public class GameInfo implements Serializable {
 	public void checkGuess() {
 		
 		this.foundLetter = false;
-		
+		System.out.println("word is " + word);
+		System.out.println("guessletter " + guessLetter);
 		for(int i = 0; i < word.length(); i++) {
 				
 			if(guessLetter.charAt(0) == word.charAt(i)) { // correctly guessed a letter
